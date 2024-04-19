@@ -1,0 +1,30 @@
+volumes:
+  db_data:
+  gems:
+
+services:
+  app:
+    container_name: app
+    image: ruby:3.3.0
+    working_dir: /app
+    volumes:
+      - .:/app
+      - gems:/usr/local/bundle
+    ports:
+      - 3000:3000
+    command: bin/start
+    external_links:
+      - db
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:secret_password@db
+
+  db:
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: secret_password

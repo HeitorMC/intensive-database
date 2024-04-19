@@ -1,0 +1,21 @@
+# https://guides.rubyonrails.org/configuring.html#database-pooling
+# https://guides.rubyonrails.org/configuring.html#configuring-a-database
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: intensive_database_development
+
+test:
+  <<: *default
+  database: intensive_database_test
+
+production:
+  <<: *default
+  database: intensive_database_production
+  username: intensive_database
+  password: <%= ENV["DATABASE_PASSWORD"] %>

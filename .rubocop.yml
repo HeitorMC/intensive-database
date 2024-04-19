@@ -1,0 +1,29 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/**/*"
+    - "bin/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "lib/**/*"
+
+Metrics/AbcSize:
+  Exclude:
+    - "db/migrate/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*"
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: "comma"
+
+Style/Documentation:
+  Enabled: false
