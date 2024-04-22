@@ -18,4 +18,12 @@ class QueriesFacade < ApplicationQuery
   def articles_ordered_by_comments
     execute_query(load_query('day_one/task_2_3.sql'))
   end
+
+  def top_commenter
+    execute_query(load_query('day_one/task_extra_1.sql'))
+  end
+
+  def fetch_people_comment_by_article(title)
+    execute_query(load_query('day_one/task_extra_2.sql'), [title])
+  end
 end
