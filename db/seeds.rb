@@ -3,8 +3,8 @@
 require_relative 'seeder'
 
 seeder = Seeder.new(
-  # Person,
-  # Article,
+  Person,
+  Article,
   # Comment,
   # Reaction,
 )
