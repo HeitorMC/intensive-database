@@ -6,6 +6,7 @@ services:
   app:
     container_name: app
     image: ruby:3.3.0
+    user: 1000:1000
     working_dir: /app
     volumes:
       - .:/app
