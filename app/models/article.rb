@@ -20,4 +20,5 @@
 class Article < ApplicationRecord
   belongs_to :author, class_name: 'Person'
   has_many :comments
+  has_many :reactions, as: :reactionable
 end

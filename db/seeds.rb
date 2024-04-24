@@ -6,7 +6,7 @@ seeder = Seeder.new(
   Person,
   Article,
   Comment,
-  # Reaction,
+  Reaction,
 )
 
 seeder.seed!

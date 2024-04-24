@@ -22,4 +22,5 @@
 class Comment < ApplicationRecord
   belongs_to :article
   belongs_to :sender, class_name: 'Person'
+  has_many :reactions, as: :reactionable, dependent: :destroy
 end

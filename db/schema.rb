@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_174004) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_144415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,7 +40,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_174004) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.string "kind"
+    t.bigint "person_id", null: false
+    t.string "reactionable_type", null: false
+    t.bigint "reactionable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_reactions_on_person_id"
+    t.index ["reactionable_type", "reactionable_id"], name: "index_reactions_on_reactionable"
+  end
+
   add_foreign_key "articles", "people", column: "author_id"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "people", column: "sender_id"
+  add_foreign_key "reactions", "people"
 end
